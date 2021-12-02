@@ -1,5 +1,5 @@
 function collectStats() {
-  // Replace this with your Google Sheet URL
+  // Replace this with your Google Sheet URL 
   var googleSheetUrl = 'https://docs.google.com/spreadsheets/d/1OdTqudTUrKnAzz1TZPLkiGIcYV2T3jFsGubk51SRZwc/';
 
   // Maximum pagesize for GmailApp is 500; if execution time exceeds six minutes script will be killed.
@@ -8,11 +8,11 @@ function collectStats() {
 
   var userName = Session.getEffectiveUser().getEmail();
   var googleSheetApp = SpreadsheetApp.openByUrl(googleSheetUrl);
-
+  
   var now = new Date();
   var threads;
   var ages = Array();
-  var threadsCount = GmailApp.getInboxThreads().length;
+  var threadsCount = 0;
   do {
     threads = GmailApp.getInboxThreads(start, pageSize);
 
@@ -21,11 +21,11 @@ function collectStats() {
     });
 
     start += pageSize;
+    threadsCount += threads.length;
   } while(threads.length > 0);
-
-  var threadsCount = GmailApp.getInboxThreads().length;
+  
   var unreadThreadsCount = GmailApp.getInboxUnreadCount();
-
+  
   // Add a row to the first sheet in the Google Sheet.
   var logSheet = googleSheetApp.getSheets()[0];
   var row = [now,userName,unreadThreadsCount,threadsCount, ...ages];
