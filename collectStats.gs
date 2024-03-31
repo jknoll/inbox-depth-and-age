@@ -1,4 +1,7 @@
 function collectStats() {
+  // Source: https://github.com/jknoll/inbox-depth-and-age/blob/main/collectStats.gs
+  // Edit Google Sheet URL below and copy/paste this into a project at https://script.google.com/home
+  // Set a trigger for your preferred execution interval here: https://script.google.com/home/triggers
   // Replace this with your Google Sheet URL 
   var googleSheetUrl = 'https://docs.google.com/spreadsheets/d/1OdTqudTUrKnAzz1TZPLkiGIcYV2T3jFsGubk51SRZwc/';
 
